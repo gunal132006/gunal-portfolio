@@ -89,7 +89,7 @@ export const Hero: React.FC = () => {
             />
 
             <p className="font-reenie text-2xl sm:text-[28px] text-[#2f2f2f] leading-snug">
-              Computer Science student & developer building practical software, web applications, and data-driven solutions.
+              {personalInfo.heroBioText}
             </p>
           </div>
 
@@ -131,10 +131,10 @@ export const Hero: React.FC = () => {
           {/* Hand-Drawn Social Doodles Row */}
           <div className="flex items-center justify-center lg:justify-start gap-6 mt-6">
             <a
-              href="#contact"
+              href={contact.phoneUrl}
               className="inline-flex items-center justify-center text-[#2f2f2f] hover:text-[#e44242] transition-transform hover:scale-125 hover:-translate-y-1"
-              title="Contact / Phone"
-              aria-label="Contact"
+              title="Call / Phone"
+              aria-label="Call Gunal"
             >
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />

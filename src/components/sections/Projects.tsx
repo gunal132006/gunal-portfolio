@@ -37,7 +37,7 @@ export const Projects: React.FC = () => {
               repoUrl={project.repositoryUrl}
               liveUrl={project.liveUrl}
               baseRotate={project.rotate || '0deg'}
-              isUpcoming={project.isPlaceholder}
+              isUpcoming={project.status === 'upcoming' || project.isPlaceholder}
               onRepoClick={
                 project.repositoryUrl?.startsWith('#')
                   ? (e) => handlePlaceholderClick(e, 'Repository', project.title)

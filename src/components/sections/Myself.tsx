@@ -4,7 +4,7 @@ import { TiltCard } from '../ui/TiltCard';
 import { portfolioData } from '../../data/portfolioData';
 
 export const Myself: React.FC = () => {
-  const { myself } = portfolioData;
+  const { myself, personalInfo } = portfolioData;
   const [swatted, setSwatted] = useState(false);
 
   return (
@@ -64,19 +64,13 @@ export const Myself: React.FC = () => {
         >
           <TornPaper tapeTop={true} className="w-full">
             <p>
-              I'm a <span className="Highlighter">Computer Science student</span> who is passionate about building software, <span className="Highlighter">full-stack web applications</span>, and data-driven solutions.
+              I'm <span className="Highlighter">{personalInfo.name}</span>, a <span className="Highlighter">{myself.education.year}</span> <span className="Highlighter">{myself.education.degree}</span> student at <span className="Highlighter">{myself.education.college}</span> (Expected Graduation: <span className="Highlighter">{myself.education.expectedGraduation}</span>). I enjoy building practical software, exploring full-stack development, and learning through hands-on projects.
             </p>
             
             <br />
 
             <p>
-              Right now, I'm pursuing my <span className="Highlighter">{myself.education.degree}</span> at <span className="Highlighter">{myself.education.college}</span>. I'm currently in <span className="Highlighter">{myself.education.year}</span> and continuously improving my skills in Full-Stack Development, Problem Solving, and software architectures.
-            </p>
-
-            <br />
-
-            <p>
-              Areas of focus: <span className="Highlighter">Software Development</span>, <span className="Highlighter">Web Applications</span>, and <span className="Highlighter">Data Analysis</span>.
+              Interests include: <span className="Highlighter">Full-stack development</span>, <span className="Highlighter">Web applications</span>, <span className="Highlighter">Software development</span>, <span className="Highlighter">Data analysis</span>, and <span className="Highlighter">Problem solving</span>.
             </p>
           </TornPaper>
         </TiltCard>

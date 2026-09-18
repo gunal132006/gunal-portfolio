@@ -104,7 +104,7 @@ export const SpiralNotebook: React.FC<SpiralNotebookProps> = ({
           </div>
 
           {/* Hand-Drawn Action Buttons */}
-          {(repoUrl || liveUrl) && (
+          {repoUrl || liveUrl ? (
             <div className="Project1-Button mb-3">
               {repoUrl && (
                 <a
@@ -129,7 +129,22 @@ export const SpiralNotebook: React.FC<SpiralNotebookProps> = ({
                 </a>
               )}
             </div>
-          )}
+          ) : isUpcoming ? (
+            <div className="Project1-Button mb-3 flex flex-wrap justify-center gap-2">
+              <span
+                className="Project1-Repo !cursor-default opacity-80 select-none pointer-events-none"
+                title="GitHub repository coming soon"
+              >
+                <p>GitHub — Coming Soon</p>
+              </span>
+              <span
+                className="Project1-Live !cursor-default opacity-80 select-none pointer-events-none"
+                title="Live demo coming soon"
+              >
+                <p>Live Demo — Coming Soon</p>
+              </span>
+            </div>
+          ) : null}
         </div>
       </div>
     </TiltCard>

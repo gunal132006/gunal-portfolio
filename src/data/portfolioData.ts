@@ -2,6 +2,7 @@ export interface EducationData {
   degree: string;
   college: string;
   year: string;
+  expectedGraduation: string;
 }
 
 export interface MyselfData {
@@ -42,6 +43,8 @@ export interface ProjectItem {
 
 export interface ContactData {
   email: string;
+  phone: string;
+  phoneUrl: string;
   location: string;
   githubUrl: string;
   linkedinUrl: string;
@@ -53,7 +56,8 @@ export interface PortfolioData {
     name: string;
     role: string;
     tagline: string;
-    heroBio: {
+    heroBioText: string;
+    heroBio?: {
       greeting: string;
       lead: string;
       highlights: string[];
@@ -70,29 +74,31 @@ export const portfolioData: PortfolioData = {
     name: 'Gunal S',
     role: 'FULL STACK DEV',
     tagline: 'Computer Science Student & Developer',
+    heroBioText: 'Computer Science student and developer building practical software, exploring full-stack development, and turning ideas into useful applications.',
     heroBio: {
-      greeting: "Hi, I'm Gunal.",
-      lead: "Computer Science student & developer building",
-      highlights: ["practical software", "web applications", "data-driven solutions"]
+      greeting: "Hi, I'm Gunal S.",
+      lead: "Computer Science student and developer building practical software,",
+      highlights: ["exploring full-stack development,", "and turning ideas into useful applications."]
     }
   },
   myself: {
     greeting: "Hi, I'm Gunal S,",
     paragraphs: [
-      "a Computer Science student and developer who enjoys building practical software and exploring technology through hands-on projects.",
-      "I’m interested in full-stack development, data-driven applications, problem solving, and learning how different technologies can be combined to build useful solutions.",
-      "I enjoy turning ideas into working applications and continuously improving my technical skills through academic and personal projects."
+      "I'm Gunal S, a 3rd-year B.Tech Information Technology student at Saveetha School of Engineering. I enjoy building practical software, exploring full-stack development, and learning through hands-on projects.",
+      "Areas of focus: Full-stack development, Web applications, Software development, Data analysis, and Problem solving."
     ],
     education: {
-      degree: "Bachelor's Degree in Computer Science",
-      college: "[College Name]",
-      year: "[Academic Year]"
+      degree: "B.Tech (Information Technology)",
+      college: "Saveetha School of Engineering",
+      year: "3rd Year",
+      expectedGraduation: "2028"
     },
     interests: [
-      "Software Development",
-      "Web Applications",
-      "Data Analysis",
-      "Problem Solving"
+      "Full-stack development",
+      "Web applications",
+      "Software development",
+      "Data analysis",
+      "Problem solving"
     ]
   },
   skills: {
@@ -152,8 +158,8 @@ export const portfolioData: PortfolioData = {
       description: "A responsive shared household expense management application designed to help roommates record expenses, track individual spending, divide shared rent, and calculate final settlements.",
       technologies: ["React", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS", "PWA"],
       image: null,
-      repositoryUrl: null, // Ready for real repository URL
-      liveUrl: null,       // Ready for real demo URL
+      repositoryUrl: "https://github.com/gunal132006/shared-home-expense-tracker",
+      liveUrl: "https://shared-home-expense-tracker.vercel.app/",
       status: "completed",
       featured: true,
       rotate: "-1.5deg",
@@ -165,9 +171,9 @@ export const portfolioData: PortfolioData = {
       description: "A data analysis project that reconstructs missing environmental observations using polynomial interpolation and evaluates the reconstructed data for further analysis.",
       technologies: ["R", "Statistics", "Polynomial Interpolation", "Data Analysis"],
       image: null,
-      repositoryUrl: null, // Ready for real repository URL
-      liveUrl: null,       // Ready for real research URL
-      status: "completed",
+      repositoryUrl: null,
+      liveUrl: null,
+      status: "upcoming",
       featured: true,
       rotate: "1.5deg",
       isPlaceholder: false
@@ -178,7 +184,7 @@ export const portfolioData: PortfolioData = {
       description: "More experiments, ideas and builds are on the way. Check back soon or visit my GitHub for ongoing repositories and code snippets.",
       technologies: ["Experiments", "Prototypes", "Ideas"],
       image: null,
-      repositoryUrl: "https://github.com",
+      repositoryUrl: "https://github.com/gunal132006",
       liveUrl: null,
       status: "upcoming",
       featured: false,
@@ -187,10 +193,12 @@ export const portfolioData: PortfolioData = {
     }
   ],
   contact: {
-    email: "[Your Email Address]",
-    location: "[Your Location / City, Country]",
-    githubUrl: "https://github.com",
-    linkedinUrl: "https://linkedin.com",
+    email: "sg4818749@gmail.com",
+    phone: "+91 6380127729",
+    phoneUrl: "tel:+916380127729",
+    location: "Chennai, Tamil Nadu, India",
+    githubUrl: "https://github.com/gunal132006",
+    linkedinUrl: "https://www.linkedin.com/in/gunal-s-9b7b90382/",
     formspreeUrl: "" // Connect to Formspree, Resend or EmailJS when desired
   }
 };
