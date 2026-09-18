@@ -89,7 +89,12 @@ export const Hero: React.FC = () => {
             />
 
             <p className="font-reenie text-2xl sm:text-[28px] text-[#2f2f2f] leading-snug">
-              {personalInfo.heroBioText}
+              {personalInfo.heroBioLines.map((line, idx, arr) => (
+                <React.Fragment key={idx}>
+                  {line}
+                  {idx < arr.length - 1 && <br />}
+                </React.Fragment>
+              ))}
             </p>
           </div>
 

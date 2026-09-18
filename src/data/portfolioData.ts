@@ -57,6 +57,7 @@ export interface PortfolioData {
     role: string;
     tagline: string;
     heroBioText: string;
+    heroBioLines: string[];
     heroBio?: {
       greeting: string;
       lead: string;
@@ -74,11 +75,15 @@ export const portfolioData: PortfolioData = {
     name: 'Gunal S',
     role: 'FULL STACK DEV',
     tagline: 'Computer Science Student & Developer',
-    heroBioText: 'Computer Science student and developer building practical software, exploring full-stack development, and turning ideas into useful applications.',
+    heroBioText: "Computer science student trying not to be unemployed\nCurrently debugging my life and my code.",
+    heroBioLines: [
+      "Computer science student trying not to be unemployed",
+      "Currently debugging my life and my code."
+    ],
     heroBio: {
       greeting: "Hi, I'm Gunal S.",
-      lead: "Computer Science student and developer building practical software,",
-      highlights: ["exploring full-stack development,", "and turning ideas into useful applications."]
+      lead: "Computer science student trying not to be unemployed",
+      highlights: ["Currently debugging my life and my code."]
     }
   },
   myself: {
