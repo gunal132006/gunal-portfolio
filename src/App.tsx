@@ -10,7 +10,7 @@ import { Footer } from './components/layout/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div className="min-h-screen py-4 sm:py-6 px-4 sm:px-8 md:px-14 lg:px-20 max-w-7xl mx-auto overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-[1400px] mx-auto relative">
       {/* 1. Notebook Sticky/Floating Header */}
       <Navbar />
 

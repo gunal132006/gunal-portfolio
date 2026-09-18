@@ -1,7 +1,6 @@
 import React from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { SpiralNotebook } from '../ui/SpiralNotebook';
-import { BalloonCat } from '../doodles/BalloonCat';
 import { portfolioData } from '../../data/portfolioData';
 
 export const Projects: React.FC = () => {
@@ -26,8 +25,8 @@ export const Projects: React.FC = () => {
       />
 
       {/* Main Spiral Notebook Cards Container */}
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 relative">
-        <div className="flex flex-wrap items-start justify-center gap-10 lg:gap-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 relative flex justify-center">
+        <div className="Projects-Grid">
           {projects.map((project) => (
             <SpiralNotebook
               key={project.id}
@@ -51,11 +50,15 @@ export const Projects: React.FC = () => {
               }
             />
           ))}
-        </div>
 
-        {/* Ambient Balloon Cat Doodle (Desktop & Tablet) */}
-        <div className="absolute -bottom-16 right-2 sm:right-8 lg:right-12 hidden md:block pointer-events-none z-20 opacity-90 animate-cat-float">
-          <BalloonCat className="w-24 sm:w-28 lg:w-32" />
+          {/* Authentic Cat Asset from Reference (Bottom Right of Grid) */}
+          <img
+            src="/Cat.webp"
+            alt="Cat"
+            className="Cat pointer-events-none"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>

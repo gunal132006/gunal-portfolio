@@ -1,7 +1,6 @@
 import React from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { StickyNote } from '../ui/StickyNote';
-import { HotAirBalloon } from '../doodles/HotAirBalloon';
 import { portfolioData } from '../../data/portfolioData';
 
 export const TechStack: React.FC = () => {
@@ -20,24 +19,28 @@ export const TechStack: React.FC = () => {
         className="mb-12 sm:mb-16"
       />
 
-      {/* Ambient Hot-Air Balloon Doodle (Desktop & Tablet) */}
-      <div className="absolute right-2 sm:right-6 lg:right-10 -top-6 sm:top-2 hidden md:block pointer-events-none z-10 opacity-90 animate-balloon-float">
-        <HotAirBalloon className="w-32 lg:w-44" />
-      </div>
+      {/* Authentic Floating Hot-Air Balloon from Reference */}
+      <img
+        src="/Balloon.webp"
+        alt="Balloon"
+        className="Balloon pointer-events-none"
+        loading="lazy"
+        decoding="async"
+      />
 
       {/* Main Sticky Notes Container */}
-      <div className="max-w-6xl mx-auto px-2 sm:px-4">
-        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-10 lg:gap-12">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4 relative z-10">
+        <div className="flex flex-wrap items-center justify-center gap-12 sm:gap-14 lg:gap-16">
           
           {/* 1. Frontend Sticky Note */}
           <StickyNote
             title={skills.frontend.title}
             color={skills.frontend.color}
-            rotate={skills.frontend.rotate}
+            rotate="-2deg"
             pinColor={skills.frontend.pinColor}
             className="transition-transform duration-200"
           >
-            <ul className="list-none space-y-2 p-0 font-sketch text-lg sm:text-xl text-ink">
+            <ul className="list-none space-y-2 p-0 font-architect text-xl text-ink">
               {skills.frontend.items.map((tech) => (
                 <li key={tech} className="tracking-wide">
                   {tech}
@@ -50,11 +53,11 @@ export const TechStack: React.FC = () => {
           <StickyNote
             title={skills.backend.title}
             color={skills.backend.color}
-            rotate={skills.backend.rotate}
+            rotate="2deg"
             pinColor={skills.backend.pinColor}
             className="transition-transform duration-200"
           >
-            <ul className="list-none space-y-2 p-0 font-sketch text-lg sm:text-xl text-ink">
+            <ul className="list-none space-y-2 p-0 font-architect text-xl text-ink">
               {skills.backend.items.map((tech) => (
                 <li key={tech} className="tracking-wide">
                   {tech}
@@ -67,11 +70,11 @@ export const TechStack: React.FC = () => {
           <StickyNote
             title={skills.databases.title}
             color={skills.databases.color}
-            rotate={skills.databases.rotate}
+            rotate="-1.5deg"
             pinColor={skills.databases.pinColor}
             className="transition-transform duration-200"
           >
-            <ul className="list-none space-y-2 p-0 font-sketch text-lg sm:text-xl text-ink">
+            <ul className="list-none space-y-2 p-0 font-architect text-xl text-ink">
               {skills.databases.items.map((tech) => (
                 <li key={tech} className="tracking-wide">
                   {tech}
@@ -84,11 +87,11 @@ export const TechStack: React.FC = () => {
           <StickyNote
             title={skills.tools.title}
             color={skills.tools.color}
-            rotate={skills.tools.rotate}
+            rotate="1.5deg"
             pinColor={skills.tools.pinColor}
             className="transition-transform duration-200"
           >
-            <ul className="list-none space-y-2 p-0 font-sketch text-lg sm:text-xl text-ink">
+            <ul className="list-none space-y-2 p-0 font-architect text-xl text-ink">
               {skills.tools.items.map((tech) => (
                 <li key={tech} className="tracking-wide">
                   {tech}

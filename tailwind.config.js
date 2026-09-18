@@ -39,7 +39,9 @@ export default {
       fontFamily: {
         marker: ['"Permanent Marker"', 'cursive', 'sans-serif'],
         hand: ['"Patrick Hand"', '"Caveat"', 'cursive', 'sans-serif'],
+        patrick: ['"Patrick Hand"', 'cursive', 'sans-serif'],
         sketch: ['"Architects Daughter"', 'cursive', 'sans-serif'],
+        architect: ['"Architects Daughter"', 'cursive', 'sans-serif'],
         reenie: ['"Reenie Beanie"', 'cursive', 'sans-serif'],
         caveat: ['"Caveat"', 'cursive', 'sans-serif'],
       },

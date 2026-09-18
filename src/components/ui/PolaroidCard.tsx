@@ -1,6 +1,4 @@
 import React from 'react';
-import { Tape } from '../doodles/Tape';
-import { RubberStamp } from '../doodles/RubberStamp';
 import { TiltCard } from './TiltCard';
 
 export interface PolaroidCardProps {
@@ -22,46 +20,48 @@ export const PolaroidCard: React.FC<PolaroidCardProps> = ({
   caption = 'Me :)',
   className = '',
   rotate = '-2deg',
-  tapeRotate = '-12deg',
   showStamp = true,
-  stampText = 'GUNAL S',
   children,
   style,
 }) => {
   return (
     <TiltCard
       baseRotate={rotate}
-      maxTilt={12}
-      scale={1.03}
+      maxTilt={10}
+      scale={1.02}
       className={`relative inline-block ${className}`}
       style={style}
     >
       <div
-        className="relative bg-white w-full max-w-[290px] sm:w-80 p-5 pb-16 shadow-polaroid rounded-sm transition-transform duration-200"
+        className="relative bg-white w-[270px] sm:w-[310px] lg:w-[350px] h-[370px] sm:h-[410px] lg:h-[450px] p-4 sm:p-5 pb-14 sm:pb-20 transition-transform duration-200"
         style={{
-          boxShadow: '0 12px 35px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05)',
+          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.08)',
         }}
       >
-        {/* Angled Scotch Tape at top */}
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-          <Tape rotate={tapeRotate} width="130px" />
-        </div>
+        {/* Authentic Scotch Masking Tape across top */}
+        <img
+          src="/tape.webp"
+          alt="tape"
+          className="absolute -top-5 left-1/2 -translate-x-1/2 -rotate-[15deg] w-[160px] sm:w-[200px] pointer-events-none z-10"
+        />
 
-        {/* Rubber Stamp mark */}
+        {/* Rubber Stamp mark in bottom right corner */}
         {showStamp && (
-          <div className="absolute -bottom-4 -right-4 z-20 pointer-events-none">
-            <RubberStamp text={stampText} subtext="VERIFIED DEV" rotate="-15deg" />
-          </div>
+          <img
+            src="/Stamp.webp"
+            alt="Stamp"
+            className="absolute w-[75px] sm:w-[90px] lg:w-[100px] left-[62%] sm:left-[66%] top-[78%] sm:top-[79%] -rotate-[19deg] z-20 pointer-events-none"
+          />
         )}
 
         {/* Inner Photo Area */}
-        <div className="relative w-full aspect-[4/5] bg-[#e4dfd5] overflow-hidden rounded-[4px] border border-[#d6d0c4] flex items-center justify-center">
+        <div className="relative w-full h-full bg-[#f3efe6] overflow-hidden rounded-[6px] border border-[#e2ddd3] flex items-center justify-center">
           {imageSrc ? (
             <img
               src={imageSrc}
               alt={imageAlt}
-              className="w-full h-full object-cover"
-              loading="lazy"
+              className="w-full h-full object-cover rounded-[6px]"
+              loading="eager"
             />
           ) : (
             children || (
@@ -79,7 +79,7 @@ export const PolaroidCard: React.FC<PolaroidCardProps> = ({
                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="font-sketch text-stone-500 text-sm">
+                <span className="font-architect text-stone-500 text-sm">
                   [Photo Placeholder]
                 </span>
               </div>
@@ -89,8 +89,8 @@ export const PolaroidCard: React.FC<PolaroidCardProps> = ({
 
         {/* Handwritten Polaroid Caption */}
         {caption && (
-          <div className="text-center mt-4">
-            <p className="font-reenie text-3xl sm:text-4xl text-marker-blue tracking-wide">
+          <div className="text-center mt-2 sm:mt-3">
+            <p className="font-reenie text-3xl sm:text-[40px] text-[#264de4] tracking-wide leading-none">
               {caption}
             </p>
           </div>

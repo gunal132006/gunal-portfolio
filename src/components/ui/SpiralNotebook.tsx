@@ -1,7 +1,5 @@
 import React from 'react';
-import { SpiralRing } from '../doodles/SpiralRing';
 import { TiltCard } from './TiltCard';
-import { HandDrawnButton } from './HandDrawnButton';
 
 export interface SpiralNotebookProps {
   title?: string;
@@ -32,108 +30,103 @@ export const SpiralNotebook: React.FC<SpiralNotebookProps> = ({
   baseRotate = '0deg',
   children,
   className = '',
-  ringCount = 18,
+  ringCount = 20,
   isUpcoming = false,
   style,
 }) => {
   return (
     <TiltCard
       baseRotate={baseRotate}
-      maxTilt={10}
-      scale={1.03}
-      className={`relative inline-block ${className}`}
+      maxTilt={12}
+      scale={1.04}
+      className={`Flip-Parent relative inline-block ${className}`}
       style={style}
     >
-      <div
-        className="relative w-full max-w-[340px] sm:w-[370px] min-h-[460px] bg-white pt-6 pb-6 px-6 pl-11 rounded-sm shadow-paper text-ink transition-transform duration-300 notebook-ruled flex flex-col"
-        style={{
-          boxShadow: '0 12px 36px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.04)',
-        }}
-      >
-        {/* Repeating Wire Spiral Rings along the left edge */}
-        <div className="absolute top-4 left-1 flex flex-col gap-[14px] pointer-events-none z-20">
-          {Array.from({ length: ringCount }).map((_, i) => (
-            <SpiralRing key={i} className="w-7 h-4 -ml-4" />
-          ))}
-        </div>
+      <div className="Flip-Notebook relative flex flex-col">
+        {/* Authentic 18 Wire Spiral Loops from Reference */}
+        {Array.from({ length: ringCount }).map((_, a) => (
+          <img
+            key={a}
+            src="/spiral.webp"
+            className="Spiral"
+            style={{ top: `${a * 22}px` }}
+            loading="lazy"
+            decoding="async"
+            alt="spiral"
+          />
+        ))}
 
-        {/* Notebook Content */}
-        <div className="relative z-10 flex flex-col h-full text-center flex-grow">
-          
-          {/* Optional Project Screenshot Area */}
-          {image && (
-            <div className="w-full h-36 mb-3 rounded border border-stone-300 overflow-hidden bg-stone-100 shadow-sm">
-              <img
-                src={image}
-                alt={title || 'Project preview'}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          )}
+        {/* Inner Project Content */}
+        <div className="Project1 flex flex-col h-full justify-between px-3">
+          <div>
+            {/* Project Screenshot if provided */}
+            {image && (
+              <div className="w-full h-32 mb-2 rounded border border-stone-300 overflow-hidden bg-stone-100">
+                <img
+                  src={image}
+                  alt={title || 'Project preview'}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
 
-          {/* Project Title (Red Marker Font) */}
-          {title && (
-            <h3
-              className={`font-marker tracking-wide mb-3 leading-snug ${
-                isUpcoming ? 'text-ink-dark text-xl sm:text-2xl' : 'text-marker-redDark text-2xl sm:text-3xl'
-              }`}
-            >
-              {title}
-            </h3>
-          )}
+            {/* Project Title */}
+            {title && (
+              <h3
+                className={`${isUpcoming ? '!text-[#2f2f2f]' : ''} ${
+                  title.length > 35 ? '!text-[22px] !leading-[1.15] !mb-2' : ''
+                }`}
+              >
+                {title}
+              </h3>
+            )}
 
-          {/* Project Description */}
-          {description && (
-            <p className="font-hand text-lg sm:text-xl text-ink leading-relaxed px-1 mb-4">
-              {description}
-            </p>
-          )}
+            {/* Project Description in Reenie Beanie font */}
+            {description && (
+              <p className="Project1-Desc text-[#2f2f2f]">
+                {description}
+              </p>
+            )}
 
-          {/* Technology Highlighter Tags */}
-          {tags.length > 0 && (
-            <div className="flex flex-wrap items-center justify-center gap-2 my-2">
-              {tags.map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="highlighter font-sketch text-xs tracking-wider text-ink font-bold"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+            {/* Technology Highlights */}
+            {tags.length > 0 && (
+              <div className="Project-Highlights flex-wrap">
+                {tags.map((tag, idx) => (
+                  <p key={idx}>
+                    <span className="Project-Marker">{tag}</span>
+                  </p>
+                ))}
+              </div>
+            )}
 
-          {children}
+            {children}
+          </div>
 
-          {/* Action Buttons */}
+          {/* Hand-Drawn Action Buttons */}
           {(repoUrl || liveUrl) && (
-            <div className="mt-auto pt-5 flex items-center justify-center gap-3">
+            <div className="Project1-Button mb-3">
               {repoUrl && (
-                <HandDrawnButton
-                  asAnchor
+                <a
                   href={repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  size="sm"
+                  className="Project1-Repo"
                   onClick={onRepoClick}
-                  className="w-28 text-center text-lg"
                 >
-                  Repository
-                </HandDrawnButton>
+                  <p>Repository</p>
+                </a>
               )}
               {liveUrl && (
-                <HandDrawnButton
-                  asAnchor
+                <a
                   href={liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  size="sm"
+                  className="Project1-Live"
                   onClick={onLiveClick}
-                  className="w-24 text-center text-lg"
                 >
-                  Live
-                </HandDrawnButton>
+                  <p>Live</p>
+                </a>
               )}
             </div>
           )}

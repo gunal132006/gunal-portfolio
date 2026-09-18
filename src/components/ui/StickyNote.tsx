@@ -1,5 +1,4 @@
 import React from 'react';
-import { PushPin } from '../doodles/PushPin';
 import { TiltCard } from './TiltCard';
 
 export type StickyColor = 'orange' | 'blue' | 'green' | 'purple' | 'yellow';
@@ -29,8 +28,6 @@ export const StickyNote: React.FC<StickyNoteProps> = ({
   children,
   className = '',
   rotate = '-1.5deg',
-  pinColor = '#e44242',
-  pinPosition = 'left',
   style,
 }) => {
   const bgColor = COLOR_MAP[color] || color;
@@ -38,37 +35,34 @@ export const StickyNote: React.FC<StickyNoteProps> = ({
   return (
     <TiltCard
       baseRotate={rotate}
-      maxTilt={14}
-      scale={1.05}
+      maxTilt={16}
+      scale={1.06}
       className={`relative inline-block ${className}`}
       style={style}
     >
       <div
-        className="relative w-64 min-h-[250px] p-6 text-center font-sketch shadow-note transition-transform duration-200"
+        className="relative w-[250px] h-[250px] p-[30px_20px] text-center font-architect transition-all duration-300"
         style={{
           backgroundColor: bgColor,
-          borderRadius: '2px',
-          boxShadow: '3px 8px 20px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)',
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
         }}
       >
-        {/* PushPin on top */}
-        <div
-          className={`absolute -top-3.5 z-20 ${
-            pinPosition === 'center' ? 'left-1/2 -translate-x-1/2' : 'left-3'
-          }`}
-        >
-          <PushPin color={pinColor} className="w-8 h-8" />
-        </div>
+        {/* Authentic 3D PushPin in top-left */}
+        <img
+          src="/Push-Pin.webp"
+          alt="Pushpin"
+          className="absolute -top-3.5 -left-2.5 w-[42px] z-10 pointer-events-none"
+        />
 
-        {/* Optional Title with Wavy Underline */}
+        {/* Title with wavy underline */}
         {title && (
-          <h3 className="font-bold text-xl text-ink tracking-wide mb-3 mt-2 wavy-underline inline-block">
+          <h3 className="font-bold text-2xl text-[#2f2f2f] mb-4 mt-1 wavy-underline inline-block">
             {title}
           </h3>
         )}
 
-        {/* Content */}
-        <div className="text-ink text-lg leading-relaxed">{children}</div>
+        {/* Content list */}
+        <div className="text-[#2f2f2f] text-xl leading-relaxed">{children}</div>
       </div>
     </TiltCard>
   );

@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Tape } from '../doodles/Tape';
 
 export interface TornPaperProps {
   children: React.ReactNode;
@@ -30,32 +29,31 @@ export const TornPaper: React.FC<TornPaperProps> = ({
     if (!el) return;
 
     const generateJaggedEdge = () => {
-      const w = el.offsetWidth;
-      const h = el.offsetHeight;
-      if (w === 0 || h === 0) return;
+      const width = el.offsetWidth || 500;
+      const height = el.offsetHeight || 300;
 
       const points: string[] = [];
 
-      // Top edge (left to right)
-      for (let x = 0; x <= w; x += step) {
-        const offset = Math.random() * jitter;
-        points.push(`${x}px ${offset.toFixed(1)}px`);
+      // Top edge with subtle paper tearing
+      for (let x = 0; x <= width; x += step) {
+        const offset = (Math.random() - 0.5) * (jitter * 0.7);
+        points.push(`${x}px ${Math.max(0, offset).toFixed(1)}px`);
       }
 
-      // Right edge (top to bottom)
-      for (let y = 0; y <= h; y += step) {
-        const offset = w - Math.random() * jitter;
+      // Right edge with jagged fiber rips
+      for (let y = 0; y <= height; y += step) {
+        const offset = width - Math.random() * jitter;
         points.push(`${offset.toFixed(1)}px ${y}px`);
       }
 
-      // Bottom edge (right to left)
-      for (let x = w; x >= 0; x -= step) {
-        const offset = h - Math.random() * jitter;
+      // Bottom edge
+      for (let x = width; x >= 0; x -= step) {
+        const offset = height - Math.random() * jitter;
         points.push(`${x}px ${offset.toFixed(1)}px`);
       }
 
-      // Left edge (bottom to top)
-      for (let y = h; y >= 0; y -= step) {
+      // Left edge
+      for (let y = height; y >= 0; y -= step) {
         const offset = Math.random() * jitter;
         points.push(`${offset.toFixed(1)}px ${y}px`);
       }
@@ -70,20 +68,23 @@ export const TornPaper: React.FC<TornPaperProps> = ({
 
   return (
     <div
-      className={`relative filter drop-shadow-[4px_6px_14px_rgba(0,0,0,0.18)] ${className}`}
+      className={`relative max-w-[620px] w-full mx-auto filter drop-shadow-[5px_5px_10px_rgba(0,0,0,0.25)] transition-transform duration-300 ${className}`}
       style={style}
     >
-      {/* Optional frosted scotch tape on top */}
+      {/* Authentic Scotch Masking Tape across top center */}
       {tapeTop && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
-          <Tape rotate={tapeRotate} width="110px" />
-        </div>
+        <img
+          src="/tape.webp"
+          alt="tape"
+          style={{ transform: `rotate(${tapeRotate})` }}
+          className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-[110px] z-20 pointer-events-none drop-shadow-sm"
+        />
       )}
 
       {/* Torn paper container with SVG noise texture */}
       <div
         ref={paperRef}
-        className="relative bg-[#f4f1ea] p-8 text-ink-dark transition-all"
+        className="relative bg-[#f4f1ea] p-8 sm:p-10 text-[#2d2a26] transition-all min-h-[280px]"
         style={{
           clipPath: clipPolygon,
           backgroundImage: `
@@ -95,14 +96,16 @@ export const TornPaper: React.FC<TornPaperProps> = ({
       >
         {/* Subtle paper grain texture overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply"
+          className="absolute inset-0 pointer-events-none opacity-60 mix-blend-multiply"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
           }}
           aria-hidden="true"
         />
 
-        <div className="relative z-10">{children}</div>
+        <div className="relative z-10 font-patrick text-[1.3rem] sm:text-[1.4rem] leading-[1.65] text-[#2d2a26]">
+          {children}
+        </div>
       </div>
     </div>
   );
